@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day10</title>
+  </head>
+  <body>
+    <div class="task1">
+      <h1>Activity 1</h1>
+      <h3>Task 1</h3>
+      <p id="para">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis
+        voluptas officia animi velit laborum.
+      </p>
+      <button id="btn">Change Text</button>
+    </div>
+
+    <div class="task2">
+      <h3>Task 2</h3>
+      <img src="js-image.png" alt="" id="img" style="height: 200px" />
+    </div>
+
+    <div class="task3">
+      <h1>Activity 2</h1>
+      <h3>Task 3, 4</h3>
+      <div id="chngColor">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita.
+      </div>
+    </div>
+
+    <div class="task5">
+      <h1>Activity 3</h1>
+      <h3>Task 5</h3>
+      <input id="txt" type="text" placeholder="type a key" />
+    </div>
+
+    <div class="task6">
+      <h3>Task 6</h3>
+      <input type="text" id="myInput" />
+      <p id="para1"></p>
+    </div>
+    <div class="task7">
+      <h1>Activity 4</h1>
+      <h3>Task 7</h3>
+      <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="task8">
+      <h3>Task 8</h3>
+      <label for="mySelect">Choose an option:</label>
+      <select id="mySelect">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+      </select>
+      <p id="selectedValue">Selected value:</p>
+    </div>
+    <div class="task9">
+      <h1>Activity 5</h1>
+      <h3>Task 9</h3>
+      <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+    <div class="task10">
+      <h3>Task 10</h3>
+      <button id="addItemButton">Add Item</button>
+      <ul id="parentList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //Activity 1: Basic Event Handling
+    //Task 1:
+    const para = document.querySelector("#para");
+    const btn = document.querySelector("#btn");
+
+    btn.addEventListener("click", (e) => {
+      para.innerHTML = "Hello from Devansh Patil";
+    });
+
+    //Task 2:
+    const img = document.querySelector("#img");
+
+    img.addEventListener("dblclick", (e) => {
+      if (img.style.display === "none") {
+        img.style.display = "block";
+      } else {
+        img.style.display = "none";
+      }
+    });
+
+    //Activity 2: Mouse Events
+    //Task 3, 4:
+    const color = document.querySelector("#chngColor");
+
+    color.addEventListener("mouseover", (e) => {
+      color.style.backgroundColor = "yellow";
+    });
+
+    color.addEventListener("mouseout", (e) => {
+      color.style.backgroundColor = "";
+    });
+
+    //Activity 3: Keyboard Events
+    //Task 5:
+    const txt = document.querySelector("#txt");
+
+    txt.addEventListener("keydown", (e) => {
+      console.log(e.key);
+    });
+
+    //Task 6:
+    const input = document.querySelector("#myInput");
+    const displayText = document.querySelector("#para1");
+
+    input.addEventListener("keyup", (e) => {
+      displayText.innerHTML = `Current Value: ${input.value}`;
+    });
+
+    //Task 7:
+    const form = document.querySelector("#myForm");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      for (const [name, value] of formData.entries()) {
+        console.log(`${name}: ${value}`);
+      }
+    });
+
+    //Task 8:
+    const select = document.querySelector("#mySelect");
+    const displayPara = document.querySelector("#selectedValue");
+
+    select.addEventListener("change", (e) => {
+      displayPara.innerHTML = `Selected value: ${select.value}`;
+    });
+
+    //Task 9:
+    const list = document.getElementById("myList");
+    function handleClick(event) {
+      if (event.target.tagName === "LI") {
+        console.log(`Clicked item: ${event.target.textContent}`);
+      }
+    }
+
+    list.addEventListener("click", handleClick);
+
+    //Task 10:
+    const parentList = document.getElementById("parentList");
+    const addItemButton = document.getElementById("addItemButton");
+
+    function handleItemClick(event) {
+      if (event.target.tagName === "LI") {
+        console.log(`Clicked item: ${event.target.textContent}`);
+      }
+    }
+    parentList.addEventListener("click", handleItemClick);
+
+    function addItem() {
+      const newItem = document.createElement("li");
+      newItem.textContent = `Item ${parentList.children.length + 1}`;
+      parentList.appendChild(newItem);
+    }
+
+    addItemButton.addEventListener("click", addItem);
+  </script>
+</html>
