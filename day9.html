@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Example</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <p id="welcomeMessage">Welcome to the site</p>
+    <p class="highlight" style="background-color: blue">
+      This is a highlighted paragraph
+    </p>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+    <img
+      width="200px"
+      id="sampleImage"
+      src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+      alt="Sample Image"
+    />
+    <p id="toggleClassExample">Add and Remove CSS class</p>
+    <button id="textChangeButton">Click me to change text</button>
+  </body>
+  <script>
+    // Activity 1: Selecting and Manipulating Elements
+    // Task 1: Select an element by its ID and change its text content
+    document.querySelector("#welcomeMessage").textContent =
+      "Welcome to the journey";
+
+    // Task 2: Select an element by its class and change its background color
+    document.querySelector(".highlight").style.background = "red";
+
+    // Activity 2: Creating and Appending Elements
+    // Task 3: Create a new div element and append it to the body
+    const newDiv = document.createElement("div");
+    newDiv.textContent = "Hello World";
+    document.body.appendChild(newDiv);
+
+    // Task 4: Create a new li element and add it to an existing ul list
+    const newListItem = document.createElement("li");
+    newListItem.textContent = "Services";
+    document.querySelector("ul").appendChild(newListItem);
+
+    // Activity 3: Removing Elements
+    // Task 5: Select an element and remove it from the DOM
+    document.querySelector(".highlight").remove();
+
+    // Task 6: Remove the last child of a specific HTML element
+    document
+      .querySelector("ul")
+      .removeChild(document.querySelector("ul").lastElementChild);
+
+    // Activity 4: Modifying Attributes and Styles
+    // Task 7: Select an element and change one of its attributes (e.g., src of an img tag)
+    document.querySelector("#sampleImage").src =
+      "https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load";
+
+    // Task 8: Add and remove a CSS class to/from an HTML element
+    document.querySelector("#toggleClassExample").style.color = "red";
+    document.querySelector("#toggleClassExample").style.removeProperty("color");
+
+    // Activity 5: Event Handling
+    // Task 9: Add a click event listener to a button that changes the text content of a paragraph
+    document
+      .querySelector("#textChangeButton")
+      .addEventListener("click", () => {
+        document.querySelector("#textChangeButton").textContent =
+          "Text Changed";
+      });
+
+    // Task 10: Add a mouseover event listener to an element that changes its border color
+    document
+      .querySelector("#textChangeButton")
+      .addEventListener("mouseover", () => {
+        document.querySelector("#textChangeButton").style.border =
+          "1px solid red";
+      });
+  </script>
+</html>
